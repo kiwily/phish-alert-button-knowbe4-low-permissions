@@ -1,0 +1,40 @@
+{
+  "timeZone": "Europe/Paris",
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "dependencies": {
+    "enabledAdvancedServices": [
+      {
+        "userSymbol": "Gmail",
+        "serviceId": "gmail",
+        "version": "v1"
+      }
+    ]
+  },
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/gmail.addons.execute",
+    "https://www.googleapis.com/auth/gmail.addons.current.message.readonly",
+    "https://www.googleapis.com/auth/gmail.addons.current.action.compose",
+    "https://www.googleapis.com/auth/userinfo.email",
+    "https://www.googleapis.com/auth/script.external_request"
+  ],
+  "urlFetchWhitelist": ["https://*.knowbe4.com/api/v1/phishalert"],
+  "gmail": {
+    "name": "Phish Alert Add-on",
+    "logoUrl": "https://www.akeneo.com/wp-content/uploads/2024/07/cropped-logo-akeneo-Symbol@2x-32x32.png",
+    "contextualTriggers": [
+      {
+        "unconditional": {},
+        "onTriggerFunction": "onGmailMessage"
+      }
+    ],
+    "composeTrigger": {
+      "selectActions": [
+        {
+          "text": "Report Phishing",
+          "runFunction": "reportPhishing"
+        }
+      ]
+    }
+  }
+}
